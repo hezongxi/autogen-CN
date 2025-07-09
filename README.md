@@ -11,11 +11,11 @@
 
 </div>
 
-<div align="center" style="background-color: rgba(255, 235, 59, 0.5); padding: 10px; border-radius: 5px; margin: 20px 0;">
-  <strong>重要声明：</strong> 这是AutoGen的官方中文版项目。我们与任何分叉或创业公司都没有关联。请查看我们的 <a href="https://x.com/pyautogen/status/1857264760951296210">声明</a>。
-</div>
-
 # AutoGen 中文版
+
+> **基于 Microsoft AutoGen 的中文本地化项目**  
+> 本项目基于 [Microsoft AutoGen](https://github.com/microsoft/autogen) 创建，遵循 MIT 许可证。  
+> 感谢 Microsoft 和 AutoGen 团队的杰出贡献！
 
 **AutoGen** 是一个用于创建多智能体AI应用程序的框架，这些应用程序可以自主运行或与人类协作。
 
@@ -202,22 +202,58 @@ analysis_team = RoundRobinGroupChat([
 
 ## 📄 许可证
 
-本项目基于 [MIT 许可证](LICENSE-CODE) 开源。
+本项目基于原版 Microsoft AutoGen 项目，遵循相同的许可证结构：
+
+- **代码部分**: [MIT 许可证](LICENSE-CODE) - 允许自由使用、修改和分发
+- **文档部分**: [Creative Commons Attribution 4.0](LICENSE) - 要求署名
+
+### 原版项目声明
+```
+Copyright (c) Microsoft Corporation.
+
+基于 Microsoft AutoGen (https://github.com/microsoft/autogen)
+本项目为中文本地化版本，保留所有原始版权声明和许可证条款。
+```
 
 ## 🤝 贡献
 
-我们欢迎社区贡献！请查看 [贡献指南](CONTRIBUTING.md) 了解如何参与项目开发。
+我们欢迎社区贡献！在贡献之前，请：
 
-## 🏆 特别感谢
+1. 查看 [贡献指南](CONTRIBUTING.md)
+2. 遵循原版 AutoGen 的贡献规范
+3. 确保中文翻译的准确性和一致性
+4. 保持与上游项目的同步
 
-感谢 Microsoft 和 AutoGen 团队创造了这个强大的框架！
+### 贡献类型
+- 🌐 中文翻译和本地化
+- 🐛 Bug 修复和问题报告
+- 📚 文档改进和示例补充
+- 🚀 新功能开发（需与上游保持一致）
+
+## 🔗 相关链接
+
+- **原版项目**: [Microsoft AutoGen](https://github.com/microsoft/autogen)
+- **官方文档**: [AutoGen Documentation](https://microsoft.github.io/autogen/)
+- **社区支持**: [Discord](https://aka.ms/autogen-discord)
+- **问题报告**: [GitHub Issues](https://github.com/microsoft/autogen/issues)
+
+## 🏆 致谢
+
+### 原创团队
+感谢 Microsoft 和 AutoGen 团队创造了这个强大的多智能体框架！
+
+### 特别声明
+- 本项目是 Microsoft AutoGen 的**非官方**中文本地化版本
+- 我们不隶属于 Microsoft Corporation
+- 所有原始版权归 Microsoft Corporation 所有
+- 本项目旨在为中文用户提供更好的使用体验
 
 ---
 
 <div align="center">
-<strong>⭐ 如果这个项目对你有帮助，请给我们一个 Star！ ⭐</strong>
-</div>
 
-<div align="center">
-<i>让AI智能体协作改变世界 🌟</i>
+**⭐ 如果这个项目对你有帮助，请同时为 [原版项目](https://github.com/microsoft/autogen) 和本项目点赞！ ⭐**
+
+[English](https://github.com/microsoft/autogen) | **中文** | [官方文档](https://microsoft.github.io/autogen/)
+
 </div>
