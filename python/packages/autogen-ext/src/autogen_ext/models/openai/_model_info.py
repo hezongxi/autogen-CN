@@ -43,6 +43,9 @@ _MODEL_POINTERS = {
     "llama-3.3-70b": "Llama-3.3-70B-Instruct",
     "llama-4-scout": "Llama-4-Scout-17B-16E-Instruct-FP8",
     "llama-4-maverick": "Llama-4-Maverick-17B-128E-Instruct-FP8",
+    # DeepSeek models
+    "deepseek-r1": "deepseek-r1",
+    "deepseek-v3": "deepseek-v3",
 }
 
 _MODEL_INFO: Dict[str, ModelInfo] = {
@@ -414,6 +417,23 @@ _MODEL_INFO: Dict[str, ModelInfo] = {
         "structured_output": True,
         "multiple_system_messages": True,
     },
+    # DeepSeek models
+    "deepseek-r1": {
+        "vision": False,
+        "function_calling": True,
+        "json_output": True,
+        "family": ModelFamily.R1,
+        "structured_output": True,
+        "multiple_system_messages": True,
+    },
+    "deepseek-v3": {
+        "vision": True,
+        "function_calling": True,
+        "json_output": True,
+        "family": ModelFamily.UNKNOWN,
+        "structured_output": True,
+        "multiple_system_messages": True,
+    },
 }
 
 _MODEL_TOKEN_LIMITS: Dict[str, int] = {
@@ -461,11 +481,15 @@ _MODEL_TOKEN_LIMITS: Dict[str, int] = {
     "Llama-3.3-70B-Instruct": 128000,
     "Llama-4-Scout-17B-16E-Instruct-FP8": 128000,
     "Llama-4-Maverick-17B-128E-Instruct-FP8": 128000,
+    # DeepSeek models
+    "deepseek-r1": 65536,
+    "deepseek-v3": 32768,
 }
 
 GEMINI_OPENAI_BASE_URL = "https://generativelanguage.googleapis.com/v1beta/openai/"
 ANTHROPIC_OPENAI_BASE_URL = "https://api.anthropic.com/v1/"
 LLAMA_API_BASE_URL = "https://api.llama.com/compat/v1/"
+DEEPSEEK_API_BASE_URL = "https://api.deepseek.com/v1/"
 
 
 def resolve_model(model: str) -> str:

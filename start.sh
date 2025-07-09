@@ -59,9 +59,11 @@ show_menu() {
     echo "2. 运行Hello World示例"
     echo "3. 运行Web浏览示例"
     echo "4. 运行多智能体团队示例"
-    echo "5. 启动交互式Python环境"
-    echo "6. 查看系统信息"
-    echo "7. 退出"
+    echo "5. 运行DeepSeek API示例"
+    echo "6. 测试DeepSeek集成"
+    echo "7. 启动交互式Python环境"
+    echo "8. 查看系统信息"
+    echo "9. 退出"
     echo ""
 }
 
@@ -239,6 +241,41 @@ EOF
     python3 examples/team_example.py
 }
 
+# 运行DeepSeek API示例
+run_deepseek_example() {
+    echo -e "${BLUE}🤖 运行DeepSeek API示例...${NC}"
+    
+    # 检查DeepSeek API密钥
+    if [[ -z "$DEEPSEEK_API_KEY" ]]; then
+        echo -e "${YELLOW}⚠️ 未设置DEEPSEEK_API_KEY环境变量${NC}"
+        echo -e "${YELLOW}正在使用内置的测试密钥...${NC}"
+        export DEEPSEEK_API_KEY="sk-28d64e25188d420eb08459313355c135"
+    fi
+    
+    if [[ ! -f "examples/deepseek_config_example.py" ]]; then
+        echo -e "${YELLOW}⚠️ DeepSeek示例文件不存在，正在创建...${NC}"
+        echo -e "${BLUE}示例文件将在examples/目录中创建${NC}"
+        return 1
+    fi
+    
+    python3 examples/deepseek_config_example.py
+}
+
+# 测试DeepSeek集成
+test_deepseek_integration() {
+    echo -e "${BLUE}🧪 测试DeepSeek集成...${NC}"
+    
+    # 设置API密钥
+    export DEEPSEEK_API_KEY="sk-28d64e25188d420eb08459313355c135"
+    
+    if [[ ! -f "test_deepseek.py" ]]; then
+        echo -e "${RED}❌ 测试文件不存在${NC}"
+        return 1
+    fi
+    
+    python3 test_deepseek.py
+}
+
 # 启动交互式Python环境
 start_interactive() {
     echo -e "${BLUE}🐍 启动交互式Python环境...${NC}"
@@ -312,7 +349,7 @@ main() {
     
     while true; do
         show_menu
-        read -p "请选择 (1-7): " choice
+        read -p "请选择 (1-9): " choice
         
         case $choice in
             1)
@@ -328,17 +365,23 @@ main() {
                 run_team_example
                 ;;
             5)
-                start_interactive
+                run_deepseek_example
                 ;;
             6)
-                show_system_info
+                test_deepseek_integration
                 ;;
             7)
+                start_interactive
+                ;;
+            8)
+                show_system_info
+                ;;
+            9)
                 echo -e "${GREEN}👋 感谢使用AutoGen中文版！${NC}"
                 exit 0
                 ;;
             *)
-                echo -e "${RED}❌ 无效选择，请输入1-7${NC}"
+                echo -e "${RED}❌ 无效选择，请输入1-9${NC}"
                 ;;
         esac
         
