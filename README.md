@@ -26,6 +26,7 @@
 - **🎯 灵活配置**：支持多种AI模型和自定义智能体行为
 - **💡 创新应用**：从代码生成到数据分析，从研究到自动化，无限可能
 - **🌐 丰富生态**：包含Web浏览、代码执行、可视化界面等扩展
+- **🧠 DeepSeek集成**：完整支持DeepSeek-R1推理模型和DeepSeek-V3通用模型
 
 ## 📦 安装
 
@@ -74,6 +75,8 @@ playwright install
 - 👋 运行Hello World示例
 - 🌐 运行Web浏览示例
 - 👥 运行多智能体团队示例
+- 🤖 运行DeepSeek API示例
+- 🧪 测试DeepSeek集成
 - 🐍 启动交互式Python环境
 - 📊 查看系统信息
 
@@ -91,6 +94,35 @@ async def main() -> None:
     agent = AssistantAgent("assistant", model_client=model_client)
     print(await agent.run(task="说 '你好，世界！'"))
     await model_client.close()
+
+asyncio.run(main())
+```
+
+### 🤖 DeepSeek API示例
+
+使用DeepSeek-R1推理模型创建智能体。支持复杂推理和思维链。
+
+```python
+import asyncio
+import os
+from autogen_ext.models.openai import OpenAIChatCompletionClient
+from autogen_agentchat.agents import AssistantAgent
+
+# 设置DeepSeek API密钥
+os.environ["DEEPSEEK_API_KEY"] = "your-deepseek-api-key"
+
+async def main():
+    # DeepSeek-R1推理模型
+    model_client = OpenAIChatCompletionClient(model="deepseek-r1")
+    
+    agent = AssistantAgent(
+        "deepseek_assistant", 
+        model_client=model_client,
+        system_message="你是一个逻辑推理专家，善于分析复杂问题。"
+    )
+    
+    result = await agent.run(task="解释机器学习中的过拟合问题及其解决方案")
+    print(result)
 
 asyncio.run(main())
 ```
@@ -148,9 +180,13 @@ autogenstudio ui
 - **协作解决**：复杂问题通过智能体间的协作解决
 
 ### 🔧 灵活配置
-- **多模型支持**：支持OpenAI、Azure、Anthropic等主流AI模型
+- **多模型支持**：支持OpenAI、Azure、Anthropic、DeepSeek等主流AI模型
 - **自定义智能体**：轻松创建具有特定能力的智能体
 - **工作流编排**：灵活的对话和任务流程控制
+
+#### 支持的DeepSeek模型
+- **DeepSeek-R1**：专业推理模型，支持复杂逻辑推理和思维链
+- **DeepSeek-V3**：通用对话模型，支持多模态和视觉理解
 
 ### 💡 丰富应用场景
 - **代码生成与审查**：自动化软件开发流程
@@ -196,6 +232,7 @@ analysis_team = RoundRobinGroupChat([
 ## 🌍 社区与支持
 
 - **📖 官方文档**：[https://microsoft.github.io/autogen/](https://microsoft.github.io/autogen/)
+- **🤖 DeepSeek配置**：[DeepSeek集成指南](./docs/DEEPSEEK_SETUP.md)
 - **💬 Discord社区**：[加入讨论](https://aka.ms/autogen-discord)
 - **🐛 问题报告**：[GitHub Issues](https://github.com/microsoft/autogen/issues)
 - **🔄 原版项目**：[Microsoft AutoGen](https://github.com/microsoft/autogen)
